@@ -1,85 +1,59 @@
-PubMed Standardization
-========================
+# pubmed-standardization (on develop)
 
-This library takes the PubMed information stored in a working directory and standarize the information in two formats: json and plain text. 
+This library takes the PubMed information stored in a working directory and standarize the information in plain text.
+
+## Description 
 
 The input directory contains the PubMeds *.gz files, so the first task executed for the library is unzip the files.  
 
-After unziped the files, the standardization begins,  the xml's PubMed that contains the articles are readed and generate for each article a PMIDXXX.json and PMIDXXX.txt.
+After unziped the files, the standardization begins,  the xml's PubMed that contains the articles are readed and generate for each article a PMIDXXX.txt.
 
-This library can be use as a step of a pipeline with the objective of generates the json and plain text of the PubMed articles.
+This library can be use as a step of a pipeline with the objective of generates plain text of the PubMed articles.
  
 
-========================
+The actual format is of the plain text files is:
 
-1.- Clone this repository 
+year month
+pmid
+title
+abstract
 
-    $ git clone https://github.com/javicorvi/pubmed_standardization.git
-    
-2.- Python 2.7 
-	
-	
-3.- Third Party 
-	
-	pip install pandas
-	pip install xmltodict
-	pip install json
+## Actual Version: 1.0, 2020-05-12
+## [Changelog](https://gitlab.bsc.es/inb/text-mining/generic-tools/nlp-standard-preprocessing/blob/master/CHANGELOG) 
+## Docker
+javicorvi/nlp-standard-preprocessing
+
+## Build and Run the Docker 
+
+	#To build the docker, just go into the nlp-standard-preprocessing folder and execute
+	docker build -t nlp-standard-preprocessing .
+	#To run the docker, just set the input_folder and the output
+	mkdir ${PWD}/nlp_preprocessing_output; docker run --rm -u $UID -v ${PWD}/input_output:/in:ro -v ${PWD}/nlp_preprocessing_output:/out:rw nlp-standard-preprocessing nlp-standard-preprocessing -i /in -o /out	-a MY_SET
+
+Parameters:
+<p>
+-i input folder with the documents to annotated. The documents could be plain txt or xml gate documents.
+</p>
+<p>
+-o output folder with the documents annotated in gate format.
+</p>
+<p>
+-a annotation set where the annotation will be included.
+</p>
+## Built With
+
+* [Docker](https://www.docker.com/) - Docker Containers
+
+## Versioning
+
+We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://gitlab.bsc.es/inb/text-mining/generic-tools/nlp-standard-preprocessing/-/tags). 
+
+## Authors
+
+* **Javier Corvi - Austin Mckitrick - Osnat Hakimi ** 
 
 
-4.- Sqlite 
-	
-	To control the updates of pubmed a sqlite database is generated to store the already downloaded files and standardized files. 
-	In the previous step of the pipeline the downloaded information has to be completed.
-	
-	
-5.- Run the script
-	
-	To run the script just execute python pubmed_standardization -p /home/myuser/config.properties
-	
-	The config.properties file contains the parameters for the execution
-	
-	[MAIN]
-	output=/home/myuser/your_work_dir/pubmed_data/
-	[DATABASE]
-	url=sqlite:////home/yourname/your_work_dir/bio_databases.db
-	
-	To pass parameters individually:
-	-o ----- > Output Directory
-	-u ------> SQLITE Database URL
-	
-	Remember the database has to be created in the previous step in home/yourname/your_work_dir/ 
+## License
 
-6.- The container 
-	
-	If you just want to run the app without any kind of configuration you can do it 
-	through the docker container is avaiblable in https://hub.docker.com/r/inab/pubmed_standardization/ 
-
-	The path home/yourname/your_work_dir will be the working directory in where the data will be downloaded, this is the configuration of a 
-	Volumes for stored the data outside of the container and then standardized by this container.
-
-	To run the docker: 
-	
-	1)  Wiht the default parameters: 
-	    
-	    docker run --rm -u $UID  -v /home/yourname/your_work_dir/:/app/data pubmed_standardization python pubmed_standardization.py -p config.properties
-
-		The default config.properties its inside the container and has the following default parameters: 
-		
-		[MAIN]
-		output=/app/data/pubmed_data/
-		[DATABASE]
-		url=sqlite:////app/data/bio_databases.db
-	
-		It's the most basic configuration, and it 's recommended to used in this way.
-	
-	2)  Passing specific parameters:
-	
-		docker run --rm -u $UID  -v /home/yourname/your_work_dir/:/app/data pubmed_standardization python pubmed_standardization.py -u sqlite:////app/data/bio_databases.db -o /app/data/pubmed_data/
-
-	3) Passing specifig config.properties file:
-	
-		Put your own config file in the your working directory:  /home/yourname/your_work_dir/config.properties  
-		
-		docker run --rm -u $UID  -v /home/yourname/your_work_dir/:/app/data pubmed_standardization python pubmed_standardization.py -p /app/data/config_own.properties
-		
+This project is licensed under the GNU GENERAL PUBLIC LICENSE Version 3 - see the [LICENSE.md](LICENSE.md) file for details
 		

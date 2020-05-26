@@ -19,7 +19,7 @@ title
 abstract
 
 ## Actual Version: 1.0, 2020-05-12
-## [Changelog](https://gitlab.bsc.es/inb/text-mining/generic-tools/nlp-standard-preprocessing/blob/master/CHANGELOG) 
+## [Changelog](https://github.com/ProjectDebbie/pubmed_standardization/blob/master/CHANGELOG) 
 ## Docker
 debbieproject/pubmed_standardization
 
@@ -42,7 +42,7 @@ Parameters:
 
 ## Versioning
 
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://gitlab.bsc.es/inb/text-mining/generic-tools/nlp-standard-preprocessing/-/tags). 
+We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/ProjectDebbie/pubmed_standardization/releases). 
 
 ## Authors
 

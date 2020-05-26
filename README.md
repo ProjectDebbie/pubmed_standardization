@@ -1,4 +1,4 @@
-# pubmed-standardization (on develop)
+# pubmed_standardization
 
 This library takes the PubMed information stored in a working directory and standarize the information in plain text.
 
@@ -21,25 +21,21 @@ abstract
 ## Actual Version: 1.0, 2020-05-12
 ## [Changelog](https://gitlab.bsc.es/inb/text-mining/generic-tools/nlp-standard-preprocessing/blob/master/CHANGELOG) 
 ## Docker
-javicorvi/nlp-standard-preprocessing
+debbieproject/pubmed_standardization
 
-## Build and Run the Docker 
-
-	#To build the docker, just go into the nlp-standard-preprocessing folder and execute
-	docker build -t nlp-standard-preprocessing .
+## Run the Docker 
+	
 	#To run the docker, just set the input_folder and the output
-	mkdir ${PWD}/nlp_preprocessing_output; docker run --rm -u $UID -v ${PWD}/input_output:/in:ro -v ${PWD}/nlp_preprocessing_output:/out:rw nlp-standard-preprocessing nlp-standard-preprocessing -i /in -o /out	-a MY_SET
+	docker run -v ${PWD}/pubmed:/in -v ${PWD}/standardization_output:/out pubmed_standardization:version python3 /app/pubmed_standardization.py -i /in -o /out
 
 Parameters:
 <p>
--i input folder with the documents to annotated. The documents could be plain txt or xml gate documents.
+-i input folder. Will process subfolder also.
 </p>
 <p>
--o output folder with the documents annotated in gate format.
+-o output folder.
 </p>
-<p>
--a annotation set where the annotation will be included.
-</p>
+
 ## Built With
 
 * [Docker](https://www.docker.com/) - Docker Containers

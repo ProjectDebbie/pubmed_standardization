@@ -4,14 +4,13 @@ This library takes the PubMed information stored in a working directory and stan
 
 ## Description 
 
-The input directory contains the PubMeds *.gz files, so the first task executed for the library is unzip the files.  
+The input directory contains PubMed's *.gz files.  
 
-After unziped the files, the standardization begins,  the xml's PubMed that contains the articles are readed and generate for each article a PMIDXXX.txt.
+The first task executed for the library is unzipping the files.  Thereafter, PubMed xml files containing the abstracts are read and for each article a new text file is generated, and named using the PMID identifier: PMIDXXX.txt.
 
-This library can be use as a step of a pipeline with the objective of generates plain text of the PubMed articles.
+This library can be use as an intermediate step in any pipeline required to generate plain text from PubMed abstracts in xml format.
  
-
-The actual format is of the plain text files is:
+After standardization, each text file contains the following (in this order):
 
 year month
 pmid

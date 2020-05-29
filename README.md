@@ -1,14 +1,14 @@
 # pubmed_standardization
 
-This library takes the PubMed information stored in a working directory and standarize the information in plain text.
+This library takes a PubMed abstract collection in xml format stored in a working directory and standarize the content, generating individual plain text file for each abstract.
 
 ## Description 
 
 The input directory contains PubMed's *.gz files.  
 
-The first task executed for the library is unzipping the files.  Thereafter, PubMed xml files containing the abstracts are read and for each article a new text file is generated, and named using the PMID identifier: PMIDXXX.txt.
+The first task executed for the library is unzipping the files.  Thereafter, PubMed xml files containing the abstracts are read and for each article a new text file is generated. The files are named using the PMID identifier, e.g. PMIDXXX.txt.
 
-This library can be use as an intermediate step in any pipeline required to generate plain text from PubMed abstracts in xml format.
+This library can be use as an intermediate step in any pipeline required to generate plain text from PubMed abstracts in xml format. It is useful for NLP tasks such as classification and topic mining. 
  
 After standardization, each text file contains the following (in this order):
 

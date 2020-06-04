@@ -82,8 +82,8 @@ def unzip(standardization_input):
 def standardization(standardization_input, standardization_output):
     logging.info("Standardization Input Directory " + standardization_input)
     ids_list=[]
-    if(os.path.isfile(standardization_output+"/list_files_processed.dat")):
-        with open(standardization_output+"/list_files_processed.dat",'r') as ids:
+    if(os.path.isfile(standardization_input+"/debbie_standardization_list_files_processed.dat")):
+        with open(standardization_input+"/debbie_standardization_list_files_processed.dat",'r') as ids:
             for line in ids:
                 ids_list.append(line.replace("\n",""))
         ids.close()
@@ -93,7 +93,7 @@ def standardization(standardization_input, standardization_output):
         for sub in subs:
             onlyfiles = [os.path.join(sub, f) for f in os.listdir(sub) if (os.path.isfile(os.path.join(sub, f)) & f.endswith('.xml') & (os.path.basename(f) not in ids_list))]
             pubMedRetrievals = pubMedRetrievals + onlyfiles
-    with open(standardization_output+"/list_files_processed.dat",'a') as list_files_standardized:
+    with open(standardization_input+"/debbie_standardization_list_files_processed.dat",'a') as list_files_standardized:
         for pubMedRetrieval in pubMedRetrievals:
             if not os.path.exists(standardization_output):
                 os.makedirs(standardization_output)

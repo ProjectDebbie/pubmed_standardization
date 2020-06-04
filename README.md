@@ -1,17 +1,16 @@
 # pubmed_standardization
 
-This library takes the PubMed information stored in a working directory and standarize the information in plain text.
+This library takes a PubMed abstract collection in xml format stored in a working directory and standarize the content, generating individual plain text file for each abstract.
 
 ## Description 
 
-The input directory contains the PubMeds *.gz files, so the first task executed for the library is unzip the files.  
+The input directory contains PubMed's *.gz files.  
 
-After unziped the files, the standardization begins,  the xml's PubMed that contains the articles are readed and generate for each article a PMIDXXX.txt.
+The first task executed for the library is unzipping the files.  Thereafter, PubMed xml files containing the abstracts are read and for each article a new text file is generated. The files are named using the PMID identifier, e.g. PMIDXXX.txt.
 
-This library can be use as a step of a pipeline with the objective of generates plain text of the PubMed articles.
+This library can be use as an intermediate step in any pipeline required to generate plain text from PubMed abstracts in xml format. It is useful for NLP tasks such as classification and topic mining. 
  
-
-The actual format is of the plain text files is:
+After standardization, each text file contains the following (in this order):
 
 year month
 pmid
@@ -19,7 +18,7 @@ title
 abstract
 
 ## Actual Version: 1.0, 2020-05-12
-## [Changelog](https://gitlab.bsc.es/inb/text-mining/generic-tools/nlp-standard-preprocessing/blob/master/CHANGELOG) 
+## [Changelog](https://github.com/ProjectDebbie/pubmed_standardization/blob/master/CHANGELOG) 
 ## Docker
 debbieproject/pubmed_standardization
 
@@ -42,7 +41,7 @@ Parameters:
 
 ## Versioning
 
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://gitlab.bsc.es/inb/text-mining/generic-tools/nlp-standard-preprocessing/-/tags). 
+We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/ProjectDebbie/pubmed_standardization/releases). 
 
 ## Authors
 
@@ -51,5 +50,5 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 
 ## License
 
-This project is licensed under the GNU GENERAL PUBLIC LICENSE Version 3 - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the GNU GENERAL PUBLIC LICENSE Version 3 - see the [LICENSE](LICENSE.txt) file for details
 		

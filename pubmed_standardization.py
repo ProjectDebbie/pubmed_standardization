@@ -123,7 +123,7 @@ def standardization(standardization_input, standardization_output):
                                 title = readTitle(article_xml.find('ArticleTitle'))
                                 if(abstract!=''):
                                     with codecs.open(txt_file_path +  pmid + '.txt', 'w',encoding='utf8') as txt_file:
-                                        txt_file.write(str(year) + ' ' + str(month) + '\n' + str(pmid) + '\n' + remove_invalid_characters(title) + '\n' + remove_invalid_characters(abstract) + '\n')
+                                        txt_file.write(str(year) + ' ' + str(month) + '\n' + remove_invalid_characters(title) + '\n' + remove_invalid_characters(abstract) + '\n')
                                         #txt_file.write(remove_invalid_characters(abstract) + "\n")
                                         txt_file.flush()
                                         txt_file.close()    
